@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.scss"
 
 import logoImg from "../../public/logo.png"
 
-import Input from "../components/ui/Input";
+import { Input } from "../components/ui/Input";
 
 export default function Home() {
   return (

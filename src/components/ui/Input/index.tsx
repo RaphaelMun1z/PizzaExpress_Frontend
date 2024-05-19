@@ -17,7 +17,7 @@ const TextArea = ({ ...rest }: TextAreaProps) => {
     )
 }
 
-export default {
+export {
     Input,
     TextArea
 }
