@@ -1,0 +1,38 @@
+.button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    background-color: var(--yellow);
+    border: none;
+    padding: .4rem;
+    border-radius: .5rem;
+    transition: filter .2s;
+
+    &:hover {
+        filter: brightness(1.08);
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+
+        svg {
+            animation: anim 2s infinite;
+        }
+    }
+
+    .buttonText {
+        color: var(--white);
+    }
+}
+
+@keyframes anim {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
