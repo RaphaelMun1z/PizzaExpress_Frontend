@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useContext } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -9,9 +9,14 @@ import logoImg from "../../../public/logo.png"
 import { Input } from "../../components/ui/Input";
 import { Button } from "../../components/ui/Button";
 
+import { AuthContext } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
+
 import Link from "next/link";
 
 export default function Signup() {
+    const { signUp } = useContext(AuthContext)
+
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -22,21 +27,31 @@ export default function Signup() {
         event.preventDefault()
 
         if (!name || name.trim() === "") {
-            alert("Preencha o campo nome")
+            toast.error("Preencha o campo nome!")
             return
         }
 
         if (!email || email.trim() === "") {
-            alert("Preencha o campo email")
+            toast.error("Preencha o campo email!")
             return
         }
 
         if (!password || password.trim() === "") {
-            alert("Preencha o campo senha")
+            toast.error("Preencha o campo senha!")
             return
         }
 
         setLoading(true)
+
+        let data = {
+            name,
+            email,
+            password
+        }
+
+        await signUp(data)
+
+        setLoading(false)
     }
 
     return (
