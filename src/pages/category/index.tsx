@@ -6,6 +6,8 @@ import Header from '../../components/Header'
 import { setupAPIClient } from '../../services/api'
 import { toast } from 'react-toastify'
 
+import { canSSRAuth } from '../../utils/canSSRAuth'
+
 const index = () => {
     const [name, setName] = useState("")
 
@@ -54,3 +56,9 @@ const index = () => {
 }
 
 export default index
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+    return {
+        props: {}
+    }
+})
